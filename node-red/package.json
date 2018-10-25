@@ -1,0 +1,12 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "dependencies": {
+        "node-red-contrib-ifttt": "~0.1.0",
+        "node-red-contrib-newsamsungtv": "~0.1.0",
+        "node-red-contrib-sunpos": "~1.4.0",
+        "node-red-contrib-weekday": "~0.1.0",
+        "node-red-node-pushbullet": "0.0.12"
+    }
+}

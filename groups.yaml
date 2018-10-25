@@ -1,0 +1,377 @@
+
+
+#VIEWS
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - binary_sensor.is_david_home
+    #- device_tracker.fa6cc0302630
+    - cover.garage_door_opener
+    - group.AllCameras
+    - group.frontdoorlock
+    - group.fans
+    - group.allLights
+    - group.bedroom
+    - group.mainarea
+    - group.outdoors
+    - group.office
+    - group.weather
+    - group.indoortemp
+    - device_tracker.david_pixel
+    - device_tracker.pixel_ping
+    - device_tracker.3c286d0fbd0d
+    #- vacuum.roomba
+    - climate.thermostat
+    - group.settings
+
+Settings:
+  view: no
+  icon: mdi:settings
+  entities:
+    - input_boolean.turn_on_lights_in_morning
+    - input_boolean.sunset_auto_dim_lights
+    - input_boolean.late_night_auto_dim_lights
+    - input_boolean.message_me_for_lights
+
+Scenes:
+  view: yes
+  icon: mdi:movie
+  entities:
+    - scene.blackout
+    - scene.good_morning
+    - scene.goodnight
+    - scene.maxlevel
+    - scene.midlevel
+    - scene.lowlevel
+    - scene.mood
+    - scene.movies_mode
+    - scene.video_games
+
+Cameras:
+  name: Cameras
+  icon: mdi:camera
+  view: yes
+  entities:
+    - group.allcameras
+    #~ - group.garagecamerastats
+    #~ - group.chickencamerastats
+    - group.ringstats
+
+ChickenCoop:
+  name: Chicken Coop
+  icon: mdi:duck
+  view: yes
+  entities:
+    - camera.chicken_nest_camera
+    - group.chickensettings
+    - group.cc_nestdht11
+    - group.chickendoor
+    - group.cc_motion
+    - binary_sensor.health_check
+    
+
+ChickenSettings:
+  name: Settings
+  view: no
+  icon: mdi:settings
+  entities:
+    - input_boolean.open_coop_at_noon
+
+FrontDoor:
+  name: Front Door
+  view: yes
+  entities:
+    - camera.front_door
+    - group.frontdoorlock
+    - group.ringactivity
+    - group.ringstats
+
+BatteryView:
+  name: Batteries
+  view: yes
+  icon: mdi:battery
+  entities:
+    - group.batteries
+
+WeatherView:
+  name: Weather
+  view: yes
+  icon: mdi:cloud
+  entities:
+    - group.weather
+    - group.indoortemp
+
+Media:
+  name: Media Players
+  view: yes
+  icon: mdi:cast
+  entities:
+    - media_player.chromecastanets
+    - media_player.home_mini
+    - media_player.sonos
+    - media_player.spotify
+    - media_player.samsung_tv
+    
+AutomationView:
+  name: Automations
+  view: yes
+  icon: mdi:android
+  entities:
+    - group.all_automations
+
+#GROUPS
+
+ChickenDoor:
+  name: Chicken Coop Door
+  view: no
+  entities:
+    - cover.chicken_coop_door
+    - sensor.chicken_coop_detailed_state
+    - binary_sensor.door_jam_detected
+    - binary_sensor.sensor_failure_detected
+
+AllLights:
+  name: All Lights
+  view: no
+  entities:
+    - group.bedroom
+    - group.mainarea
+    - group.outdoors
+    - group.office
+
+GarageDoor:
+  name: Garage Door
+  view: no
+  entities:
+    - cover.garage_door_opener
+    - cover.garage_door_opener_2
+
+AllCameras:
+  name: Cameras
+  view: no
+  entities:
+    - camera.chicken_camera
+    - camera.garage_camera
+    - camera.front_door
+
+Fans:
+  name: Fans
+  view: no
+  icon: mdi:fan
+  control: hidden
+  entities:
+    - switch.bedroom_fan
+    - switch.living_room_fan
+    
+CC_NestDHT11:
+  name: Chicken Nest Stats
+  view: no
+  entities:
+    - sensor.chicken_coop_nest_temperature
+    - sensor.chicken_coop_nest_humidity
+
+CC_Motion:
+  name: Motion
+  view: no
+  entities:
+    - sensor.chicken_coop_movement
+    #- camera.cc_movement_snapshot
+
+RingStats:
+  name: Ring Stats
+  view: no
+  entities:
+    - sensor.ring_front_door_battery
+    - sensor.ring_front_door_volume
+    - sensor.ring_front_door_wifi_signal_category
+    - sensor.ring_front_door_wifi_signal_strength
+
+Batteries:
+  name: Batteries
+  view: no
+  entities:
+    - sensor.ring_front_door_battery
+    - sensor.lock_battery
+    - sensor.pixel_battery
+    #~ - sensor.garage_battery
+    #~ - sensor.chicken_battery
+
+
+FrontDoorLock:
+  name: Front Door Lock
+  view: no
+  icon: mdi:lock
+  entities:
+    - lock.front_door
+    - sensor.lock_battery
+
+RingActivity:
+  name: Ring Activity
+  view: no
+  entities:
+    - binary_sensor.front_door_motion
+    - sensor.ring_front_door_last_motion
+    - sensor.ring_front_door_last_ding
+
+GarageCameraStats:
+  name: Garage Camera Stats
+  view: no
+  entities:
+   - sensor.garage_battery
+   - binary_sensor.garage_camera_loudness
+   - binary_sensor.garage_camera_motion
+   - binary_sensor.garage_camera_noise
+   - binary_sensor.garage_camera_capturing_video
+
+
+
+ChickenCameraStats:
+  name: Chicken Camera Stats
+  view: no
+  entities:
+   - sensor.chicken_battery
+   - binary_sensor.Chicken_camera_loudness
+   - binary_sensor.Chicken_camera_motion
+   - binary_sensor.Chicken_camera_noise
+   - binary_sensor.Chicken_camera_capturing_video
+
+Weather:
+  name: Weather
+  view: no
+  entities:
+    - weather.dark_sky
+    - sun.sun
+
+IndoorTemp:
+  name: Indoor Weather
+  view: no
+  entities:
+    - sensor.thermostat_detected_temperatur
+    - sensor.office_temperature
+    - sensor.office_humidity
+    - sensor.wink_relay_sensor_temperature
+    - sensor.wink_relay_sensor_humidity
+
+BedsideTable:
+    name: Bedside Table Lights
+    view: no
+    entities:
+    - light.bedside__left
+    - light.bedside__right
+
+ZenLamp:
+    name: Zen Lamp
+    view: no
+    entities:
+    - light.zen__top
+    - light.zen__bottom
+
+Bedroom:
+  name: Bedroom
+  view: no
+  icon: mdi:hotel
+  entities:
+  - group.bedsidetable
+  - group.zenlamp
+
+MainArea:
+  name: Main Area
+  view: no
+  entities:
+  - light.living_room
+  - light.entrance
+  - light.dining_room
+  - light.nook
+  - light.kitchen
+  - light.sink
+  - light.hallway
+
+Kitchen:
+  name: Kitchen
+  view: no
+  entities:
+  - light.nook
+  - light.kitchen
+  - light.sink
+  
+UtilityRoom:
+  view: no
+  entities:  
+  - switch.pantry
+  - switch.utility_room
+
+Office:
+  view: no
+  entities:
+  - switch.office_floor_lamp
+  - light.office_table
+
+Outdoors:
+  view: no
+  entities:
+  - switch.patio_lights
+  - light.porch
+  
+SunsetOff:
+  view: no
+  entities:
+  - light.office
+  - switch.pantry
+  - switch.utility_room
+
+SunsetDim:
+  view: no
+  entities:
+  - group.Kitchen
+  - light.living_room
+  - light.dining_room
+  - light.hallway
+  - light.entrance
+  
+LateNightOff:
+  view: no
+  entities:
+  - light.office
+  - switch.pantry
+  - switch.utility_room
+
+LateNightDim:
+  view: no
+  entities:
+  - group.Kitchen
+  - light.living_room
+  - light.dining_room
+  - light.hallway
+  - light.office_table
+  - light.entrance
+
+Taxi:
+  view: yes
+  name: Drive Times and Prices
+  icon: mdi:taxi
+  entities:
+ # - group.BartonSprings
+  - group.DirtySixth
+ # - group.EastSixth
+
+#BartonSprings:
+#  view: no
+#  name: Barton Springs
+#  entities:
+#  - sensor.lyft_home_to_barton_springs
+#  - sensor.uber_home_to_barton_springs
+  
+DirtySixth:
+  view: no
+  name: Dirty Sixth
+  entities:
+  - sensor.lyft_home_to_dirty_sixth
+  - sensor.uber_home_to_dirty_sixth
+  
+#EastSixth:
+#  view: no
+#  name: East Sixth
+#  entities:
+#  - sensor.lyft_home_to_east_sixth
+#  - sensor.uber_home_to_east_sixth  

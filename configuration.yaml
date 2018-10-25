@@ -1,0 +1,617 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  #name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  #radius: 500
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret timezone
+  # Customization file
+  customize: !include customize.yaml
+
+wink:
+
+light: !include lights.yaml 
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+#Presence detection
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  #broker: !secret cloudmqtt_url
+  #port: !secret cloudmqtt_port
+  #client_id: !secret cloudmqtt_client_id
+  #keepalive: 60
+  #username: pi
+  #password: !secret cloudmqtt_password
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.1.190
+    home_interval: 3
+    consider_home: 180
+    track_new_devices: false
+    
+# - platform: gpslogger
+  #~ - platform: bluetooth_tracker
+    #~ consider_home: 180
+    #~ new_device_defaults:
+      #~ track_new_devices: False
+      #~ hide_if_away: True
+  - platform: owntracks
+    max_gps_accuracy: 250
+    mqtt_topic: "owntracks/#"
+    waypoints: True
+  - platform: ping
+    track_new_devices: False
+    friendly_name: Pixel
+    consider_home: 180
+    scan_interval: 10
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: True
+    hosts:
+      pixel_ping: 192.168.1.190
+
+input_boolean:
+  open_coop_at_noon:
+    name: Open coop door at noon instead of sunrise
+    icon: mdi:white-balance-sunny
+  turn_on_lights_in_morning:
+    name: Turn on bedroom lights in the morning
+    icon: mdi:white-balance-sunny
+  sunset_auto_dim_lights:
+    name: Auto-dimming of lights at sunset enabled
+    icon: mdi:lightbulb
+  late_night_auto_dim_lights:
+    name: Auto-dimming of lights at 10 PM enabled
+    icon: mdi:lightbulb
+  message_me_for_lights:
+    name: Message me for light change automations
+    icon: mdi:lightbulb
+
+binary_sensor:
+  # Chicken Pi Is Alive Check
+  - platform: ping
+    name: "Health Check"
+    host: 192.168.1.150
+    count: 2
+    scan_interval: 30
+    
+  - platform: bayesian
+    prior: 0.7
+    name: Is David Home?
+    probability_threshold: 0.65
+    observations:
+      - entity_id: 'device_tracker.david_pixel'
+        prob_given_true: 0.99
+        prob_given_false: 0.01
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.david_pixel'
+        prob_given_true: 0.40
+        prob_given_false: 0.40
+        platform: 'state'
+        to_state: 'away'
+      - entity_id: 'device_tracker.david_pixel'
+        prob_given_true: 0.00
+        prob_given_false: 1
+        platform: 'state'
+        to_state: 'work'
+      - entity_id: 'device_tracker.pixel_ping'
+        prob_given_true: 1
+        prob_given_false: 0
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.pixel_ping'
+        prob_given_true: 0.15
+        prob_given_false: 0.65
+        platform: 'state'
+        to_state: 'not_home'
+      - entity_id: 'cover.garage_door_opener'
+        prob_given_true: 1
+        prob_given_false: 0.01
+        platform: 'state'
+        to_state: 'open'
+      - entity_id: 'lock.front_door'
+        prob_given_true: 0.6
+        prob_given_false: 0.4
+        platform: 'state'
+        to_state: 'unlocked'
+      #- entity_id: 'device_tracker.fa6cc0302630'
+      #  prob_given_true: 1
+      #  prob_given_false: 0.01
+      #  platform: 'state'
+      # to_state: 'home'
+      #- entity_id: 'device_tracker.fa6cc0302630'
+      # prob_given_true: 0.15
+      # prob_given_false: 0.90
+      #  platform: 'state'
+      #  to_state: 'not_home'
+      - entity_id: 'device_tracker.3c286d0fbd0d'
+        prob_given_true: 1.00
+        prob_given_false: 0.01
+        platform: 'state'
+        to_state: 'home'
+        
+  - platform: mqtt
+    state_topic: "chickenPi/door/Jammed"
+    name: "Door Jam Detected"
+    value_template: '{{ value }}'
+    
+  - platform: mqtt
+    state_topic: "chickenPi/door/FailedSensor"
+    name: "Sensor Failure Detected"
+    value_template: '{{ value }}'
+        
+  - platform: workday
+    country: US
+    workdays: [tue, wed, thu]
+    excludes: [mon, fri, sat, sun, holiday]
+
+zone:
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 300
+    elevation: 0
+    icon: mdi:home
+
+  - name: Work
+    latitude: !secret work_latitude
+    longitude: !secret work_longitude
+    radius: 300
+    elevation: 0
+    icon: mdi:briefcase
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret ha_api_password
+  login_attempts_threshold: 3
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+    ignore:
+        - philips_hue
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+#history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+  google_actions:
+    filter:
+      exclude_entities:
+        - climate.thermostat
+        - light.all_kitchen
+        - light.bedroom
+        - light.blackout
+        - light.inside_lights
+        - light.main_area
+        - light.not_bedroom
+        - light.not_living_room
+        - light.office
+        - light.wbedside
+        - light.wbedside__left_2
+        - light.wbedside__right_2
+        - light.woffice_table_2
+        - light.wporch_2
+        #~ - light.entrance_2
+        - light.wzen__bottom_2
+        - light.wzen__top_2
+        - light.nook_2
+        - light.sink_2
+        - cover.garage_door_opener
+        - cover.chicken_coop_door
+        - scene.bed_off
+        - scene.bed_on
+        - scene.goodnight__alexa
+        - scene.goodnight_den
+        - scene.leaving_robot
+        - scene.leaving
+        - scene.lock
+        - scene.lr_off
+        - scene.lr_on
+        - scene.patio_off
+        - scene.patio_on
+        - switch.fans
+        - switch.utility_lights
+      exclude_domains:
+        - group
+        - media_player
+    #~ entity_config:
+      #~ switch.utility_room:
+        #~ type: 'action.devices.types.LIGHT'
+      #~ switch.pantry:
+        #~ type: 'action.devices.types.LIGHT'
+      #~ switch.office_floor_lamp:
+        #~ type: 'action.devices.types.LIGHT'
+      #~ switch.patio_lights:
+        #~ type: 'action.devices.types.LIGHT'
+      #~ switch.bedroom_fan:edit
+        #~ type: 'action.devices.types.OUTLET'
+      #~ switch.living_room_fan:
+        #~ type: 'action.devices.types.OUTLET'
+
+camera:
+  - platform: generic
+    name: Chicken Nest Camera
+    still_image_url: !secret chicken_nest_camera_url
+    framerate: 25
+    #~ - platform: arlo
+      #~ ffmpeg_arguments: '-pred 1 -q:v 2'
+  - platform: ring
+    
+    #~ - platform: local_file
+      #~ file_path: "/tmp/movmement_snapshot.jpg"
+      #~ name: CC_Movement_Snapshot
+
+ffmpeg:
+
+sensor:
+#Dirty Sixth
+  - platform: lyft
+    client_id: !secret lyft_CLIENT_ID
+    client_secret: !secret lyft_CLIENT_SECRET
+    start_latitude: !secret home_latitude
+    start_longitude: !secret home_longitude
+    end_latitude: !secret dirty_latitude
+    end_longitude: !secret dirty_longitude
+    product_ids:
+      - 'lyft'
+  - platform: uber
+    server_token: !secret uber_token  
+    end_latitude: !secret dirty_latitude
+    end_longitude: !secret dirty_longitude
+    product_ids:
+      - !secret uber_product
+#Barton Springs
+  #- platform: lyft
+  #  name: lyft_barton_springs
+  # client_id: !secret lyft_CLIENT_ID
+  # client_secret: !secret lyft_CLIENT_SECRET
+  # start_latitude: !secret home_latitude
+  #  start_longitude: !secret home_longitude
+  #  end_latitude: !secret barton_latitude
+  #  end_longitude: !secret barton_longitude
+  #  product_ids:
+  #    - 'lyft'
+  #- platform: uber
+  # name: uber_barton_springs
+  #  server_token: !secret uber_token    
+  #  end_latitude: !secret barton_latitude
+  #  end_longitude: !secret barton_longitude
+  #  product_ids:
+  #    - !secret uber_product
+#East Sixth
+  #- platform: lyft
+  #  client_id: !secret lyft_CLIENT_ID
+  #  client_secret: !secret lyft_CLIENT_SECRET
+  #  start_latitude: !secret home_latitude
+  #  start_longitude: !secret home_longitude
+  #  end_latitude: !secret east_latitude
+  #  end_longitude: !secret east_longitude
+  #  product_ids:
+  #    - 'lyft'
+  #- platform: uber
+  #  server_token: !secret uber_token    
+  #  end_latitude: !secret east_latitude
+  #  end_longitude: !secret east_longitude
+  #  product_ids:
+  #    - !secret uber_product
+  - platform: template
+    sensors:
+      lyft_home_to_dirty_sixth:
+        friendly_name: "Lyft"
+        value_template: '${{ states.sensor.lyft_price.state }} ({{ (states.sensor.lyft_price.attributes["Prime Time percentage"]) }} markup),  available in {{ (states.sensor.lyft_price.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.lyft_price.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
+  #    lyft_home_to_east_sixth:
+  #      friendly_name: "Lyft"
+  #      value_template: '${{ states.sensor.lyft_price_2.state }} ({{ (states.sensor.lyft_price_2.attributes["Prime Time percentage"]) }} markup),  available in {{ (states.sensor.lyft_price_2.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.lyft_price_2.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
+  #    lyft_home_to_barton_springs:
+  #      friendly_name: "Lyft"
+  #      value_template: '${{ states.sensor.lyft_price_3.state }} ({{ (states.sensor.lyft_price_3.attributes["Prime Time percentage"]) }} markup),  available in {{ (states.sensor.lyft_price_3.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.lyft_price_3.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'        
+      uber_home_to_dirty_sixth:
+        friendly_name: "Uber"
+        value_template: '${{ states.sensor.uberx_price.state }} ({{ (states.sensor.uberx_price.attributes["Surge multiplier"]) }}x multiplier),  available in {{ (states.sensor.uberx_price.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.uberx_price.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
+  #    uber_home_to_barton_springs:
+  #      friendly_name: "Uber"
+  #      value_template: '${{ states.sensor.uberx_price_2.state }} ({{ (states.sensor.uberx_price_2.attributes["Surge multiplier"]) }}x multiplier),  available in {{ (states.sensor.uberx_price_2.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.uberx_price_2.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
+  #    uber_home_to_east_sixth:
+  #      friendly_name: "Uber"
+  #      value_template: '${{ states.sensor.uberx_price_3.state }} ({{ (states.sensor.uberx_price_3.attributes["Surge multiplier"]) }}x multiplier),  available in {{ (states.sensor.uberx_price_3.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.uberx_price_3.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
+
+  - platform: dht
+    name: Office
+    sensor: DHT11
+    pin: 17
+    monitored_conditions:
+        - temperature
+        - humidity
+
+  - platform: ring
+
+  #Nest Thermometer
+  - platform: mqtt
+    state_topic: "ChickenPi/sensors/NestDHT11"
+    name: "Chicken Coop: Nest Temperature"
+    unit_of_measurement: '°F'
+    icon: mdi:thermometer
+    force_update: True
+    value_template: '{{ value_json.temperature }}'
+  - platform: mqtt
+    state_topic: "ChickenPi/sensors/NestDHT11"
+    name: "Chicken Coop: Nest Humidity"
+    unit_of_measurement: '%'
+    icon: mdi:water
+    force_update: True
+    value_template: '{{ value_json.humidity }}'
+
+    #Coop Motion
+  - platform: mqtt
+    state_topic: "ChickenPi/sensors/Movement"
+    name: "Chicken Coop: Movement"
+    force_update: True
+    value_template: '{{ value_json.detected }}'
+  #Phone Battery
+  - platform: mqtt
+    state_topic: "owntracks/David/Pixel"
+    name: "Pixel Battery"
+    unit_of_measurement: "% Battery"
+    value_template: '{{ value_json.batt }}'
+    icon: mdi:battery
+  - platform: mqtt
+    state_topic: "chickenPi/door/DetailedState"
+    name: "Chicken Coop Detailed State"
+    value_template: '{{ value }}'
+    
+
+    
+
+  #Camera batteries
+  - platform: template
+    sensors:
+      #chicken_battery:
+      #  friendly_name: "Chicken Camera Battery"
+      #  unit_of_measurement: '% Battery'
+      #  value_template: "{{ states.camera.chicken_camera.attributes.battery_level }}"
+      #  icon_template: mdi:battery
+      #garage_battery:
+      #  friendly_name: "Garage Camera Battery"
+      #  unit_of_measurement: '% Battery'
+      #  value_template: "{{ states.camera.garage_camera.attributes.battery_level }}"
+      #  icon_template: mdi:battery
+      lock_battery:
+        friendly_name: "Front Door Lock Battery"
+        unit_of_measurement: '% Battery'
+        value_template: "{{ states.lock.front_door.attributes.battery_level }}"
+        icon_template: mdi:battery
+       #Thermostat's detected temperature
+      thermostat_detected_temperature:
+        friendly_name: "Hallway Temperature"
+        unit_of_measurement: '°F'
+        value_template: "{{ states.climate.thermostat.attributes.current_temperature }}"
+        icon_template: mdi:thermostat
+      chicken_coop_door_state:
+        friendly_name: "Chicken Coop Door State"
+        value_template: "{{ states.cover.chicken_coop_door }}"
+      #~ dark_sky_hourly_summary:
+        #~ friendly_name: "Today's Forecast"
+        #~ value_template: "{{ states.weather.darksky.attributes.hourly_forecast_summary }}"
+        #~ icon_template: mdi:cloud
+      #~ dark_sky_daily_summary:
+        #~ friendly_name: "Upcoming Forecast"
+        #~ value_template: "{{ states.weather.darksky.attributes.daily_forecast_summary }}"
+        #~ icon_template: mdi:cloud
+        
+
+    
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - light
+      - cover
+      - device_tracker
+    entities:
+      - binary_sensor.is_david_home
+      - device_tracker.david_pixel
+  exclude:
+    entities:
+      - light.nook_2
+      - light.sink_2
+      - light.wbedside__left
+      - light.wbedside__right
+      - light.woffice_table
+      - light.wzen__bottom
+      - light.wzen__top
+      - binary_sensor.is_david_home
+      - sensor.wink_relay_sensor_proximity
+      - sensor.ring_front_door_battery
+      - sensor.ring_front_door_last_activity
+      - sensor.ring_front_door_last_ding
+      - sensor.ring_front_door_last_motion
+      - sensor.ring_front_door_volume
+      - sensor.ring_front_door_wifi_signal_category
+      - sensor.ring_front_door_wifi_signal_strength
+    domains:
+      - automation
+      - binary_sensor
+
+#~ history_graph:
+  #~ gr1:
+    #~ name: Temperature
+    #~ entities:
+      #~ - light.ceiling.lights
+      #~ - light.bed_light
+    #~ hours_to_show: 240
+    #~ refresh: 60
+
+climate:
+  platform: honeywell
+  username: !secret climate_username
+  password: !secret climate_password
+  scan_interval: 600
+
+cover:
+  - platform: myq
+    username: !secret myq_username
+    password: !secret myq_password
+    type: chamberlain
+    
+  - platform: mqtt
+    name: "Chicken Coop Door"
+    command_topic: "chickenPi/door/set"
+    state_topic: "chickenPi/door/State"
+    state_open: "Open"
+    state_closed: "Closed"
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+  
+#vacuum:
+#  - platform: roomba
+#    host: 192.168.1.230
+#    username: !secret vacuum_username
+#    password: !secret vacuum_password
+
+#~ arlo:
+  #~ username: !secret arlo_username
+  #~ password: !secret arlo_password
+
+#APIs
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+  - platform: samsungtv
+    #host: 192.168.1.165      #wireless
+    #mac: !secret samsung_wireless_mac   #wireless
+    host: 192.168.1.117     #wired
+    mac: !secret samsung_wired_mac  #wired
+    port: 8001
+    name: Samsung TV
+
+ifttt:
+    key: !secret ifttt_key
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    monitored_conditions:
+      - summary
+      - precip_type
+      - precip_intensity
+      - precip_intensity_max
+      - precip_probability
+      - precip_accumulation
+      - temperature
+      - apparent_temperature
+      - apparent_temperature_max
+      - apparent_temperature_min
+      - wind_speed
+      - wind_bearing
+      - humidity
+      - hourly_summary
+
+notify:
+  - platform: pushbullet
+    api_key: !secret pushbullet_api
+  - name: TWILIO
+    platform: twilio_sms
+    from_number: !secret twilio_from_number
+
+twilio:
+  account_sid: !secret twilio_account
+  auth_token: !secret twilio_api
+
+panel_iframe:
+   nodered_flows:
+     title: 'Node-RED'
+     url: !secret nodered_flows_url
+     icon: mdi:nodejs
+   chicken_nest:
+     title: 'Chicken Nest Camera'
+     url: !secret chicken_nest_url
+     icon: mdi:duck
+  # configurator:
+  #   title: 'Configurator'
+  #   url: !secret configurator_url 
+  #   icon: mdi:wrench
+   ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: !secret ide_url
+     
+
+
+##DISABLED##
+#
+# lutron_caseta:
+#     host: 192.168.1.126
+#     keyfile: caseta.key
+#     certfile: caseta.crt
+#     ca_certs: caseta-bridge.crt
+
+# google_assistant:
+#   project_id: !secret google_assistant_project_id
+# client_id: !secret google_assistant_client_id
+# access_token: !secret google_assistant_access_token
+# agent_user_id: !secret google_assistant_username 
+# api_key: !secret google_assistant_api_key
+#   exposed_domains:
+#   - switch
+#   - light
+#   - group
+  #entity_config:
+  # switch.kitchen:
+  #   name: Custom Name for Google Assistant
+  #   aliases:
+  #     - bright lights
+  #     - entry lights
+  # light.living_room:
+  #   expose: false
+  #   room: living room

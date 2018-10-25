@@ -1,0 +1,38 @@
+- id: '1522429847618'
+  alias: Arrive
+  trigger:
+  - entity_id: binary_sensor.is_david_home
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data_template:
+      entity_id: "{% if now().hour >= 22 or now().hour < 4 %}\n    scene.lowlevel\n\
+        {% elif states.sun.sun.attributes.elevation < 2.5 %}\n    scene.midlevel\n\
+        {% else %}\n    scene.maxlevel\n{% endif %}\n"
+    service: scene.turn_on
+  - data:
+      message: "{% if now().hour >= 22 or now().hour < 4 %}\n    'Lights on - Late\
+        \ Night: Triggered'\n{% elif states.sun.sun.attributes.elevation < 2.5 %}\n\
+        \    'Lights on - Night: Triggered'\n{% else %}\n    'Lights on - Daytime:\
+        \ Triggered'\n{% endif %}\n"
+    service: notify.notify
+- id: '1522430065730'
+  alias: Leaving
+  trigger:
+  - entity_id: binary_sensor.is_david_home
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+  - data:
+      entity_id: scene.leaving
+    service: scene.turn_on
+  - alias: ''
+    data:
+      message: Leaving Triggered
+    service: notify.notify
+  - data:
+      entity_id: media_player.samsung_tv
+    service: media_player.turn_off

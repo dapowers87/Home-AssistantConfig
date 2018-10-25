@@ -1,0 +1,85 @@
+- platform: group
+  name: testlights
+  entities:
+    - light.dining_room
+    - light.hallway
+    - light.office_table
+    - light.entrance
+    - light.living_room
+    
+    
+#- platform: group
+  #name: Bedroom
+  #entities:
+  #- group.bedsidetable
+  #- group.zenlamp
+
+- platform: group
+  name: Main Area
+  entities:
+  - light.living_room
+  - light.entrance
+  - light.dining_room
+  - light.nook
+  - light.kitchen
+  - light.sink
+  - light.hallway
+
+- platform: group
+  name: Kitchen
+  entities:
+  - light.nook
+  - light.kitchen
+  - light.sink
+  
+#- platform: group
+#  name: Utility Room
+#  entities:  
+#  - switch.pantry
+#  - switch.utility_room
+
+- platform: group
+  name: Office
+  entities:
+  - light.office
+  - light.office_table
+
+- platform: group
+  name: Outdoors
+  entities:
+  #- switch.patio_lights
+  - light.porch
+  
+- platform: group
+  name: Sunset Off
+  entities:
+  - light.office
+  #- switch.pantry
+  #- switch.utility_room
+
+- platform: group
+  name: Sunset Dim
+  entities:
+  - light.Kitchen
+  - light.living_room
+  - light.dining_room
+  - light.hallway
+  - light.entrance
+  - light.office_table
+  
+- platform: group
+  name: Late Night Off
+  entities:
+  - light.office
+  #- switch.pantry
+  #- switch.utility_room
+
+- platform: group
+  name: Late Night Dim
+  entities:
+  - light.Kitchen
+  - light.living_room
+  - light.dining_room
+  - light.hallway
+  - light.office_table
+  - light.entrance
