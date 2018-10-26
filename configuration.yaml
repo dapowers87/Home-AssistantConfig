@@ -362,13 +362,13 @@ sensor:
   #      friendly_name: "Uber"
   #      value_template: '${{ states.sensor.uberx_price_3.state }} ({{ (states.sensor.uberx_price_3.attributes["Surge multiplier"]) }}x multiplier),  available in {{ (states.sensor.uberx_price_3.attributes["Pickup time estimate (in seconds)"] | int)/60 }} minutes, estimated duration {{ (states.sensor.uberx_price_3.attributes["Trip duration (in seconds)"] | int )/60 |round}} minutes.'
 
-  - platform: dht
-    name: Office
-    sensor: DHT11
-    pin: 17
-    monitored_conditions:
-        - temperature
-        - humidity
+  # - platform: dht
+  #   name: Office
+  #   sensor: DHT11
+  #   pin: 17
+  #   monitored_conditions:
+  #       - temperature
+  #       - humidity
 
   - platform: ring
 
