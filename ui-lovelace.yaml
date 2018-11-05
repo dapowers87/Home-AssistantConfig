@@ -16,8 +16,12 @@ views:
           - device_tracker.pixel_ping
           - device_tracker.3c286d0fbd0d
       - type: entities
+        title: Garage
+        show_state: false
+        show_header_toggle: false
         entities:
           - cover.garage_door_opener
+          - switch.garage_light
       - type: glance
         title: Main Area
         column_width: calc(100% / 3)
@@ -35,7 +39,7 @@ views:
         entity: camera.front_door
         camera_image: camera.front_door
         show_info: true
-        tap_action: dialog
+        tap_action: more-info
       - type: entities
         title: Front Door Lock
         show_header_toggle: true
@@ -87,8 +91,8 @@ views:
         title: Indoor Weather
         show_header_toggle: true
         entities:
-          - sensor.office_temperature
-          - sensor.office_humidity
+          # - sensor.office_temperature
+          # - sensor.office_humidity
           - sensor.wink_relay_sensor_temperature
           - sensor.wink_relay_sensor_humidity
       - type: horizontal-stack
@@ -116,13 +120,13 @@ views:
           - cover.chicken_coop_door
           - sensor.chicken_coop_detailed_state
           - binary_sensor.door_jam_detected
-          - binary_sensor.sensor_failure_detected    
+          # - binary_sensor.sensor_failure_detected    
       - type: picture-entity
         title: Chicken Nest Camera
         entity: camera.chicken_nest_camera
         camera_image: camera.chicken_nest_camera
-        show_info: true
-        tap_action: dialog
+        show_info: false
+        tap_action: more-info
       - type: entities
         title: Settings
         show_header_toggle: false
