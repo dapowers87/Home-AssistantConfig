@@ -281,7 +281,7 @@ camera:
   - platform: generic
     name: Chicken Nest Camera
     still_image_url: !secret chicken_nest_camera_url
-    framerate: 25
+    framerate: 35
     #~ - platform: arlo
       #~ ffmpeg_arguments: '-pred 1 -q:v 2'
   - platform: ring
@@ -575,10 +575,10 @@ panel_iframe:
      title: 'Node-RED'
      url: !secret nodered_flows_url
      icon: mdi:nodejs
-   chicken_nest:
-     title: 'Chicken Nest Camera'
-     url: !secret chicken_nest_url
-     icon: mdi:duck
+  # chicken_nest:
+  #   title: 'Chicken Nest Camera'
+  #   url: !secret chicken_nest_url
+  #   icon: mdi:duck
   # configurator:
   #   title: 'Configurator'
   #   url: !secret configurator_url 

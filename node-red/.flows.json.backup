@@ -17,7 +17,7 @@
     "id": "3630b580.d488ca",
     "type": "tab",
     "label": "Arrive/Leave",
-    "disabled": false,
+    "disabled": true,
     "info": ""
   },
   {
@@ -52,7 +52,7 @@
     "id": "e6dd59e2.eb32a8",
     "type": "tab",
     "label": "Chicken Pi Online/Offline",
-    "disabled": false,
+    "disabled": true,
     "info": ""
   },
   {
@@ -75,7 +75,7 @@
     "z": "",
     "name": "Home Assistant",
     "url": "http://hassio/homeassistant",
-    "pass": "835511297230d60dba6c165efbdaabfc50c3faf9e224dc1623ad1572ad2c7123"
+    "pass": "d6a63fb04b066d8daa325512bc21ce6eb4c1f1a1338d33070338b5bc6ab72b3a"
   },
   {
     "id": "e3af4efc.43df7",
@@ -1662,9 +1662,9 @@
     "id": "cb1cb7e0.f4a408",
     "type": "delay",
     "z": "eef2c7ac.0250c8",
-    "name": "Wait 48h to turn back on",
+    "name": "Wait 6h to turn back on",
     "pauseType": "delay",
-    "timeout": "48",
+    "timeout": "6",
     "timeoutUnits": "hours",
     "rate": "1",
     "nbRateUnits": "1",
@@ -1673,8 +1673,8 @@
     "randomLast": "5",
     "randomUnits": "seconds",
     "drop": false,
-    "x": 270,
-    "y": 600,
+    "x": 560,
+    "y": 580,
     "wires": [
       [
         "4e28e9bc.b7fe98",
@@ -1693,7 +1693,7 @@
     "data": "{   \"entity_id\": \"automation.leaving\" }",
     "mergecontext": "",
     "x": 550,
-    "y": 660,
+    "y": 780,
     "wires": [
       []
     ]
@@ -1708,7 +1708,7 @@
     "upload": false,
     "swaggerDoc": "",
     "x": 190,
-    "y": 700,
+    "y": 820,
     "wires": [
       [
         "4e28e9bc.b7fe98",
@@ -1772,7 +1772,7 @@
     "data": "{\"entity_id\":\"automation.arrive\"}",
     "mergecontext": "",
     "x": 580,
-    "y": 700,
+    "y": 820,
     "wires": [
       []
     ]
@@ -3074,6 +3074,49 @@
     "wires": [
       [
         "7dc6f3c3.5c77fc"
+      ]
+    ]
+  },
+  {
+    "id": "4ff156ff.02fbf8",
+    "type": "http in",
+    "z": "eef2c7ac.0250c8",
+    "name": "Get \"Going on a run\" command from IFTTT",
+    "url": "/goingonarun",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 220,
+    "y": 660,
+    "wires": [
+      [
+        "5f561563.34579c",
+        "f12f1f79.4e1b1",
+        "f179a90d.1746d8"
+      ]
+    ]
+  },
+  {
+    "id": "f179a90d.1746d8",
+    "type": "delay",
+    "z": "eef2c7ac.0250c8",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "90",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 510,
+    "y": 660,
+    "wires": [
+      [
+        "4e28e9bc.b7fe98",
+        "6f551989.316ee8"
       ]
     ]
   }
