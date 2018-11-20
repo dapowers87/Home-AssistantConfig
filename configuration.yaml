@@ -34,6 +34,7 @@ mqtt:
   #password: !secret cloudmqtt_password
 
 device_tracker:
+  - platform: bluetooth_tracker
   - platform: nmap_tracker
     hosts: 192.168.1.190
     home_interval: 3

@@ -22,6 +22,8 @@ views:
         entities:
           - cover.garage_door_opener
           - switch.garage_light
+      - type: thermostat
+        entity: climate.thermostat
       - type: glance
         title: Main Area
         column_width: calc(100% / 3)
@@ -127,6 +129,8 @@ views:
         camera_image: camera.chicken_nest_camera
         show_info: false
         tap_action: more-info
+        show_state: false
+        show_name: false
       - type: entities
         title: Settings
         show_header_toggle: false
