@@ -65,9 +65,6 @@ device_tracker:
       pixel_ping: 192.168.1.190
 
 input_boolean:
-  open_coop_at_noon:
-    name: Open coop door at noon instead of sunrise
-    icon: mdi:white-balance-sunny
   turn_on_lights_in_morning:
     name: Turn on bedroom lights in the morning
     icon: mdi:white-balance-sunny
@@ -80,6 +77,16 @@ input_boolean:
   message_me_for_lights:
     name: Message me for light change automations
     icon: mdi:lightbulb
+
+input_select:
+  chicken_coop_open:
+    name: Time to open chicken coop
+    options:
+      - Sunrise
+      - Noon
+      - Never
+    initial: Sunrise
+    icon: mdi:white-balance-sunny
 
 binary_sensor:
   # Chicken Pi Is Alive Check

@@ -135,7 +135,7 @@ views:
         title: Settings
         show_header_toggle: false
         entities:
-          - input_boolean.open_coop_at_noon
+          - input_select.chicken_coop_open
       - type: entities
         title: Chicken Nest Stats
         show_header_toggle: true

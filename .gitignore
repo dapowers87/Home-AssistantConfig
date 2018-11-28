@@ -3,6 +3,9 @@
 !.gitignore
 !node-red
 !node-red/*
+!python_scripts/*
+!python_scripts
+!*.py
 *.conf
 *.txt
 *.log
