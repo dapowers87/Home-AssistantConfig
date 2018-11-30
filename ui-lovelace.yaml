@@ -16,6 +16,13 @@ views:
           - device_tracker.pixel_ping
           - device_tracker.3c286d0fbd0d
       - type: entities
+        title: Fan Lights
+        show_state: false
+        show_header_toggle: false
+        entities:
+          - switch.office_fan_light
+          - switch.bedroom_fan_light  
+      - type: entities
         title: Garage
         show_state: false
         show_header_toggle: false
@@ -24,6 +31,10 @@ views:
           - switch.garage_light
       - type: thermostat
         entity: climate.thermostat
+      - type: glance
+        entities: 
+          - climate.bedroom_ceiling_fan
+          - climate.office_ceiling_fan
       - type: glance
         title: Main Area
         column_width: calc(100% / 3)
