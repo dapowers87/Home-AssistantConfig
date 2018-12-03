@@ -311,6 +311,13 @@ switch:
     command_topic: 'fanControl/BedroomFan/light/set'
 
 sensor:
+
+  - platform: template
+    sensors:
+      next_coop_closing:
+        friendly_name: "Chicken coop door closing time"
+        value_template: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) + 1800) | timestamp_custom('%I') | int }}{{(as_timestamp(states.sun.sun.attributes.next_setting) + 1800) | timestamp_custom(':%M') + ' PM' }}"
+        
 #Dirty Sixth
   - platform: lyft
     client_id: !secret lyft_CLIENT_ID

@@ -147,6 +147,7 @@ views:
         show_header_toggle: false
         entities:
           - input_select.chicken_coop_open
+          - sensor.next_coop_closing
       - type: entities
         title: Chicken Nest Stats
         show_header_toggle: true
