@@ -960,7 +960,7 @@
   },
   "node-red-contrib-home-assistant-websocket": {
    "name": "node-red-contrib-home-assistant-websocket",
-   "version": "0.2.0",
+   "version": "0.3.1",
    "local": false,
    "nodes": {
     "server": {
@@ -1062,6 +1062,43 @@
      "local": false,
      "module": "node-red-contrib-home-assistant-websocket",
      "file": "/opt/node_modules/node-red-contrib-home-assistant-websocket/nodes/render-template/render-template.js"
+    }
+   }
+  },
+  "node-red-node-serialport": {
+   "name": "node-red-node-serialport",
+   "version": "0.6.8",
+   "local": false,
+   "nodes": {
+    "serialport": {
+     "name": "serialport",
+     "types": [
+      "serial in",
+      "serial out",
+      "serial request",
+      "serial-port"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-serialport",
+     "file": "/opt/node_modules/node-red-node-serialport/25-serial.js"
+    }
+   }
+  },
+  "node-red-contrib-eztimer": {
+   "name": "node-red-contrib-eztimer",
+   "version": "1.0.4",
+   "local": false,
+   "nodes": {
+    "eztimer": {
+     "name": "eztimer",
+     "types": [
+      "eztimer"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-eztimer",
+     "file": "/config/node-red/node_modules/node-red-contrib-eztimer/index.js"
     }
    }
   }

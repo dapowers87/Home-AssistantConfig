@@ -1084,6 +1084,23 @@
      "file": "/opt/node_modules/node-red-node-serialport/25-serial.js"
     }
    }
+  },
+  "node-red-contrib-eztimer": {
+   "name": "node-red-contrib-eztimer",
+   "version": "1.0.4",
+   "local": true,
+   "nodes": {
+    "eztimer": {
+     "name": "eztimer",
+     "types": [
+      "eztimer"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-eztimer",
+     "file": "/config/node-red/node_modules/node-red-contrib-eztimer/index.js"
+    }
+   }
   }
  },
  "users": {
