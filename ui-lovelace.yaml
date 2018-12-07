@@ -15,13 +15,22 @@ views:
           - device_tracker.david_pixel
           - device_tracker.pixel_ping
           - device_tracker.3c286d0fbd0d
+      - type: glance
+        entities: 
+          - binary_sensor.leak_sensor_liquid_detected
+        title: Water Heater Leak Detection
+        show_name: false
+        height: 75
       - type: entities
-        title: Fan Lights
+        title: Ceiling Fans
         show_state: false
         show_header_toggle: false
+        column_width: calc(100% / 2)
         entities:
           - switch.office_fan_light
+          - climate.office_ceiling_fan
           - switch.bedroom_fan_light  
+          - climate.bedroom_ceiling_fan
       - type: entities
         title: Garage
         show_state: false
@@ -31,10 +40,6 @@ views:
           - switch.garage_light
       - type: thermostat
         entity: climate.thermostat
-      - type: glance
-        entities: 
-          - climate.bedroom_ceiling_fan
-          - climate.office_ceiling_fan
       - type: glance
         title: Main Area
         column_width: calc(100% / 3)

@@ -317,6 +317,7 @@ sensor:
       next_coop_closing:
         friendly_name: "Chicken coop door closing time"
         value_template: "{{ (as_timestamp(states.sun.sun.attributes.next_setting) + 1800) | timestamp_custom('%I') | int }}{{(as_timestamp(states.sun.sun.attributes.next_setting) + 1800) | timestamp_custom(':%M') + ' PM' }}"
+        icon_template: mdi:sleep
         
 #Dirty Sixth
   - platform: lyft
