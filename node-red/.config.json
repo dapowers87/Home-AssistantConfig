@@ -1101,6 +1101,23 @@
      "file": "/config/node-red/node_modules/node-red-contrib-eztimer/index.js"
     }
    }
+  },
+  "node-red-contrib-schedex": {
+   "name": "node-red-contrib-schedex",
+   "version": "1.4.1",
+   "local": true,
+   "nodes": {
+    "schedex": {
+     "name": "schedex",
+     "types": [
+      "schedex"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-schedex",
+     "file": "/config/node-red/node_modules/node-red-contrib-schedex/index.js"
+    }
+   }
   }
  },
  "users": {
@@ -1138,7 +1155,7 @@
      "view-show-grid": true
     }
    },
-   "menu-menu-item-sidebar": true
+   "menu-menu-item-sidebar": false
   }
  }
 }

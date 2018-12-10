@@ -6,6 +6,7 @@
         "node-red-contrib-eztimer": "~1.0.4",
         "node-red-contrib-ifttt": "~0.1.0",
         "node-red-contrib-newsamsungtv": "~0.1.0",
+        "node-red-contrib-schedex": "~1.4.1",
         "node-red-contrib-sunpos": "~1.4.0",
         "node-red-contrib-weekday": "~0.1.0",
         "node-red-node-pushbullet": "0.0.12"

@@ -1088,7 +1088,7 @@
   "node-red-contrib-eztimer": {
    "name": "node-red-contrib-eztimer",
    "version": "1.0.4",
-   "local": false,
+   "local": true,
    "nodes": {
     "eztimer": {
      "name": "eztimer",
@@ -1099,6 +1099,23 @@
      "local": true,
      "module": "node-red-contrib-eztimer",
      "file": "/config/node-red/node_modules/node-red-contrib-eztimer/index.js"
+    }
+   }
+  },
+  "node-red-contrib-schedex": {
+   "name": "node-red-contrib-schedex",
+   "version": "1.4.1",
+   "local": true,
+   "nodes": {
+    "schedex": {
+     "name": "schedex",
+     "types": [
+      "schedex"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-schedex",
+     "file": "/config/node-red/node_modules/node-red-contrib-schedex/index.js"
     }
    }
   }
