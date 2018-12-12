@@ -23,3 +23,5 @@ light.dining_room_main_lights:
   friendly_name: Dining Room
 light.hallway_main_lights:
   friendly_name: Hallway
+binary_sensor.water_heater_leak_sensor:
+  device_class: moisture

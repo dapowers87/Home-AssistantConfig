@@ -91,4 +91,6 @@
   name: Patio Lights
   entity_id: switch.patio_lights
 
-  
+- platform: switch
+  name: Chicken Coop Light
+  entity_id: switch.chicken_coop_light

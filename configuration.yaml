@@ -248,55 +248,9 @@ cloud:
     filter:
       exclude_entities:
         - climate.thermostat
-        - light.all_kitchen
-        - light.bedroom
-        - light.blackout
-        - light.inside_lights
-        - light.main_area
-        - light.not_bedroom
-        - light.not_living_room
-        - light.office
-        - light.wbedside
-        - light.wbedside__left_2
-        - light.wbedside__right_2
-        - light.woffice_table_2
-        - light.wporch_2
-        #~ - light.entrance_2
-        - light.wzen__bottom_2
-        - light.wzen__top_2
-        - light.nook_2
-        - light.sink_2
-        - cover.garage_door_opener
-        - cover.chicken_coop_door
-        - scene.bed_off
-        - scene.bed_on
-        - scene.goodnight__alexa
-        - scene.goodnight_den
-        - scene.leaving_robot
-        - scene.leaving
-        - scene.lock
-        - scene.lr_off
-        - scene.lr_on
-        - scene.patio_off
-        - scene.patio_on
-        - switch.fans
-        - switch.utility_lights
       exclude_domains:
         - group
         - media_player
-    #~ entity_config:
-      #~ switch.utility_room:
-        #~ type: 'action.devices.types.LIGHT'
-      #~ switch.pantry:
-        #~ type: 'action.devices.types.LIGHT'
-      #~ switch.office_floor_lamp:
-        #~ type: 'action.devices.types.LIGHT'
-      #~ switch.patio_lights:
-        #~ type: 'action.devices.types.LIGHT'
-      #~ switch.bedroom_fan:edit
-        #~ type: 'action.devices.types.OUTLET'
-      #~ switch.living_room_fan:
-        #~ type: 'action.devices.types.OUTLET'
 
 camera:
   - platform: generic
@@ -463,8 +417,7 @@ sensor:
       #  icon_template: mdi:battery
       lock_battery:
         friendly_name: "Front Door Lock Battery"
-        unit_of_measurement: '% Battery'
-        value_template: "{{ states.zwave.front_door_lock.attributes.battery_level }}"
+        value_template: "{{ states.zwave.front_door_lock.attributes.battery_level }}%"
         icon_template: mdi:battery
        #Thermostat's detected temperature
       thermostat_detected_temperature:
@@ -532,24 +485,30 @@ climate:
   - platform: honeywell
     username: !secret climate_username
     password: !secret climate_password
-    scan_interval: 600
-  
+    scan_interval: 60
+
+fan:
   - platform: mqtt
     name: Office Ceiling Fan
-    fan_modes: 
-      - "off"
-      - "low"
-      - "medium"
-      - "high"
-    fan_mode_command_topic: 'fanControl/OfficeFan/fan/set'
+    command_topic: 'fanControl/OfficeFan/fan/set'
+    speed_command_topic: 'fanControl/OfficeFan/fan/set'
+    payload_on: "low"
+    payload_off: "off"
+    speeds:
+      - low
+      - medium
+      - high
   - platform: mqtt
     name: Bedroom Ceiling Fan
-    fan_modes:
-      - "off"
-      - "high"
-      - "medium"
-      - "low"
-    fan_mode_command_topic: 'fanControl/BedroomFan/fan/set'
+    command_topic: 'fanControl/BedroomFan/fan/set'
+    speed_command_topic: 'fanControl/BedroomFan/fan/set'
+    payload_on: "low"
+    payload_off: "off"
+    speeds:
+      - low
+      - medium
+      - high
+    
 
 cover:
   - platform: myq
