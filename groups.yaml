@@ -253,95 +253,95 @@ Fans:
 #     - sensor.wink_relay_sensor_temperature
 #     - sensor.wink_relay_sensor_humidity
 
-BedsideTable:
-    name: Bedside Table Lights
-    view: no
-    entities:
-    - light.bedside__left
-    - light.bedside__right
+# BedsideTable:
+#     name: Bedside Table Lights
+#     view: no
+#     entities:
+#     - light.bedside__left
+#     - light.bedside__right
 
-ZenLamp:
-    name: Zen Lamp
-    view: no
-    entities:
-    - light.zen__top
-    - light.zen__bottom
+# ZenLamp:
+#     name: Zen Lamp
+#     view: no
+#     entities:
+#     - light.zen__top
+#     - light.zen__bottom
 
-Bedroom:
-  name: Bedroom
-  view: no
-  icon: mdi:hotel
-  entities:
-  - group.bedsidetable
-  - group.zenlamp
+# Bedroom:
+#   name: Bedroom
+#   view: no
+#   icon: mdi:hotel
+#   entities:
+#   - group.bedsidetable
+#   - group.zenlamp
 
-MainArea:
-  name: Main Area
-  view: no
-  entities:
-  - light.living_room_main_lights
-  - light.entrance
-  - light.dining_room_main_lights
-  - light.hallway_main_lights
+# MainArea:
+#   name: Main Area
+#   view: no
+#   entities:
+#   - light.living_room_main_lights
+#   - light.entrance
+#   - light.dining_room_main_lights
+#   - light.hallway_main_lights
 
-Kitchen:
-  name: Kitchen
-  view: no
-  entities:
-  - light.nook
-  - light.kitchen_main_lights
-  - light.sink
+# Kitchen:
+#   name: Kitchen
+#   view: no
+#   entities:
+#   - light.nook
+#   - light.kitchen_main_lights
+#   - light.sink
   
-UtilityRoom:
-  view: no
-  entities:  
-  - switch.pantry
-  - switch.utility_room
+# UtilityRoom:
+#   view: no
+#   entities:  
+#   - switch.pantry
+#   - switch.utility_room
 
-Office:
-  view: no
-  entities:
-  - switch.office_floor_lamp
-  - light.office_table
+# Office:
+#   view: no
+#   entities:
+#   - switch.office_floor_lamp
+#   - light.office_table
 
-Outdoors:
-  view: no
-  entities:
-  - switch.patio_lights
-  - light.porch
+# Outdoors:
+#   view: no
+#   entities:
+#   - switch.patio_lights
+#   - light.porch
   
-SunsetOff:
-  view: no
-  entities:
-  - light.office
-  - switch.pantry
-  - switch.utility_room
+# SunsetOff:
+#   view: no
+#   entities:
+#   - light.office
+#   - switch.pantry
+#   - switch.utility_room
 
-SunsetDim:
-  view: no
-  entities:
-  - group.Kitchen
-  - light.living_room_main_lights
-  - light.dining_room_main_lights
-  - light.hallway_main_lights
-  - light.entrance
+# SunsetDim:
+#   view: no
+#   entities:
+#   - group.Kitchen
+#   - light.living_room_main_lights
+#   - light.dining_room_main_lights
+#   - light.hallway_main_lights
+#   - light.entrance
   
-LateNightOff:
-  view: no
-  entities:
-  - light.office
-  - switch.pantry
-  - switch.utility_room
+# LateNightOff:
+#   view: no
+#   entities:
+#   - light.office
+#   - switch.pantry
+#   - switch.utility_room
 
-LateNightDim:
-  view: no
-  entities:
-  - group.Kitchen
-  - light.living_room_main_lights
-  - light.dining_room_main_lights
-  - light.hallway_main_lights
-  - light.office_table
-  - light.entrance
+# LateNightDim:
+#   view: no
+#   entities:
+#   - group.Kitchen
+#   - light.living_room_main_lights
+#   - light.dining_room_main_lights
+#   - light.hallway_main_lights
+#   - light.office_table
+#   - light.entrance
 
 Taxi:
   view: yes

@@ -55,10 +55,6 @@ device_tracker:
     #~ new_device_defaults:
       #~ track_new_devices: False
       #~ hide_if_away: True
-  - platform: owntracks
-    max_gps_accuracy: 250
-    mqtt_topic: "owntracks/#"
-    waypoints: True
   - platform: ping
     track_new_devices: False
     friendly_name: Pixel
@@ -70,6 +66,11 @@ device_tracker:
     hosts:
       pixel_ping: 192.168.1.190
 
+owntracks:
+  max_gps_accuracy: 250
+  mqtt_topic: "owntracks/#"
+  waypoints: True
+  
 input_boolean:
   turn_on_lights_in_morning:
     name: Turn on bedroom lights on weekday mornings

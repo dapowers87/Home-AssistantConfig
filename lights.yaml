@@ -79,5 +79,16 @@
   - light.office_table
   - light.entrance
   
-  
+- platform: switch
+  name: Garage Light
+  entity_id: switch.garage_light
+
+- platform: switch
+  name: Office Floor Lamp
+  entity_id: switch.office_floor_lamp
+    
+- platform: switch
+  name: Patio Lights
+  entity_id: switch.patio_lights
+
   
