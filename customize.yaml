@@ -1,32 +1,6 @@
 cover.garage_door_opener:
   hidden: false
   homebridge_hidden: false
-light.all_kitchen:
-  hidden: true
-light.asdf:
-  hidden: true
-light.bedroom:
-  hidden: true
-binary_sensor.wink_hub_2:
-  hidden: true
-light.blackout:
-  hidden: true
-switch.fans:
-  hidden: true
-light.inside_lights:
-  hidden: true
-light.main_area:
-  hidden: true
-light.not_bedroom:
-  hidden: true
-light.not_living_room:
-  hidden: true
-binary_sensor.philips_hue:
-  hidden: true
-switch.utility_lights:
-  hidden: true
-light.wbedside__left_2:
-  friendly_name: Bedside - Left
 group.all_automations:
   hidden: false
 sensor.ring_front_door_battery:
@@ -40,4 +14,12 @@ cover.chicken_coop_door:
 binary_sensor.door_jam_detected:
   device_class: problem
 binary_sensor.sensor_failure_detected:
-  device_class: problem  
+  device_class: problem
+light.living_room_main_lights:
+  friendly_name: Living Room
+light.kitchen_main_lights:
+  friendly_name: Kitchen
+light.dining_room_main_lights:
+  friendly_name: Dining Room
+light.hallway_main_lights:
+  friendly_name: Hallway

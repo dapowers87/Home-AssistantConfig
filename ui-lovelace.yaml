@@ -45,13 +45,13 @@ views:
         column_width: calc(100% / 3)
         show_state: false
         entities:
-          - light.living_room
+          - light.living_room_main_lights
           - light.entrance
-          - light.dining_room
+          - light.dining_room_main_lights
           - light.nook
-          - light.kitchen
+          - light.kitchen_main_lights
           - light.sink
-          - light.hallway
+          - light.hallway_main_lights
       - type: picture-entity
         title: Front Door
         entity: camera.front_door
@@ -176,15 +176,7 @@ views:
     cards:
       - type: entities
         entities:
-          - scene.blackout
-          - scene.good_morning
-          - scene.goodnight
-          - scene.maxlevel
-          - scene.midlevel
-          - scene.lowlevel
-          - scene.mood
-          - scene.movies_mode
-          - scene.video_games
+          - group.scenes
   - title: Cameras
     icon: mdi:camera
     cards:

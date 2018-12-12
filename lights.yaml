@@ -1,13 +1,3 @@
-- platform: group
-  name: testlights
-  entities:
-    - light.dining_room
-    - light.hallway
-    - light.office_table
-    - light.entrance
-    - light.living_room
-    
-    
 #- platform: group
   #name: Bedroom
   #entities:
@@ -15,21 +5,26 @@
   #- group.zenlamp
 
 - platform: group
-  name: Main Area
+  name: Bedroom Area
   entities:
-  - light.living_room
-  - light.entrance
-  - light.dining_room
-  - light.nook
-  - light.kitchen
-  - light.sink
-  - light.hallway
+  - light.zen__bottom
+  - light.zen__top
+  - light.bedside__left
+  - light.bedside__right
 
 - platform: group
-  name: Kitchen
+  name: Main Area
+  entities:
+  - light.living_room_main_lights
+  - light.entrance
+  - light.dining_room_main_lights
+  - light.hallway_main_lights
+
+- platform: group
+  name: Kitchen Area
   entities:
   - light.nook
-  - light.kitchen
+  - light.kitchen_main_lights
   - light.sink
   
 #- platform: group
@@ -37,12 +32,6 @@
 #  entities:  
 #  - switch.pantry
 #  - switch.utility_room
-
-- platform: group
-  name: Office
-  entities:
-  - light.office
-  - light.office_table
 
 - platform: group
   name: Outdoors
@@ -60,10 +49,10 @@
 - platform: group
   name: Sunset Dim
   entities:
-  - light.Kitchen
-  - light.living_room
-  - light.dining_room
-  - light.hallway
+  - light.Kitchen_main_lights
+  - light.living_room_main_lights
+  - light.dining_room_main_lights
+  - light.hallway_main_lights
   - light.entrance
   - light.office_table
   
@@ -77,10 +66,12 @@
 - platform: group
   name: Late Night Dim
   entities:
-  - light.Kitchen
-  - light.living_room
-  - light.dining_room
-  - light.hallway
+  - light.Kitchen_main_lights
+  - light.living_room_main_lights
+  - light.dining_room_main_lights
+  - light.hallway_main_lights
   - light.office_table
   - light.entrance
+  
+  
   

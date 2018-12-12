@@ -14,10 +14,16 @@ homeassistant:
 
 python_script:
 
-wink:
+#wink:
+
+hue:
+  bridges:
+    - host: 192.168.1.209
+      allow_hue_groups: false
 
 recorder:
 
+scene: !include scenes.yaml
 light: !include lights.yaml 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -66,7 +72,7 @@ device_tracker:
 
 input_boolean:
   turn_on_lights_in_morning:
-    name: Turn on bedroom lights in the morning
+    name: Turn on bedroom lights on weekday mornings
     icon: mdi:white-balance-sunny
   sunset_auto_dim_lights:
     name: Auto-dimming of lights at sunset enabled
@@ -215,6 +221,7 @@ updater:
 discovery:
     ignore:
         - philips_hue
+        - wink
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
@@ -634,7 +641,19 @@ panel_iframe:
     icon: mdi:code-braces
     url: !secret ide_url
      
+zwave:
+  usb_path: /dev/ttyUSB0
+  network_key: !secret zwave_network_key
 
+zha:
+  usb_path: /dev/ttyUSB1 
+  database_path: /config/zigbee.db
+
+lutron_caseta:
+  host: 192.168.1.126
+  keyfile: /ssl/lutron/caseta.key
+  certfile: /ssl/lutron/caseta.crt
+  ca_certs: /ssl/lutron/caseta-bridge.crt
 
 ##DISABLED##
 #

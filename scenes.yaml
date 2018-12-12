@@ -1,0 +1,117 @@
+  - name: Goodnight
+    entities:
+      switch.patio_lights: off
+      switch.garage_light: off
+      light.porch: off
+
+      cover.garage_door_opener: closed
+      lock.lock: locked
+
+      switch.living_room_fan: off
+      switch.bedroom_fan: on
+
+      switch.office_floor_lamp: off
+      light.office_table: off
+
+      light.main_area: off
+
+      light.kitchen_main_lights: off
+      light.nook: off
+      light.sink:
+        state: true
+        brightness_pct: 20
+        kelvin: 2000
+
+      climate.office_ceiling_fan:
+        fan_mode: off
+      climate.bedroom_ceiling_fan:
+        fan_mode: low
+
+      light.bedroom_area:
+        state: true
+        brightness_pct: 40
+
+  - name: Max-Level
+    entities:
+      light.main_area:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      light.kitchen_area:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      light.office_table:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      switch.office_floor_lamp: on
+
+  - name: Mid-Level
+    entities:
+      light.main_area:
+        state: true
+        brightness_pct: 45
+        kelvin: 4000
+      light.kitchen_area:
+        state: true
+        brightness_pct: 33
+        kelvin: 4000
+      light.office_table:
+        state: true
+        brightness_pct: 50
+        kelvin: 4000
+      switch.office_floor_lamp: off
+
+  - name: Low-Level
+    entities:
+      light.main_area:
+        state: true
+        brightness_pct: 30
+        kelvin: 4000
+      light.kitchen:
+        state: true
+        brightness_pct: 25
+        kelvin: 4000
+      light.office_table:
+        state: true
+        brightness_pct: 25
+        kelvin: 4000
+      switch.office_floor_lamp: off
+
+  - name: Blackout
+    entities:
+      group.all_lights: off
+      switch.office_floor_lamp : off
+      switch.patio_lights: off
+      switch.garage_light: off
+
+  - name: Leaving
+    entities:
+      switch.patio_lights: off
+      switch.garage_light: off
+
+      light.main_area: off
+      light.kitchen_area: off
+      light.living_room_main_lights:
+        state: true
+        brightness_pct: 10
+
+      light.office_table: off
+      switch.office_floor_lamp: off
+
+      group.fans: off
+
+      light.bedroom_area: off
+
+      climate.bedroom_ceiling_fan:
+        fan_mode: off
+      climate.office_ceiling_fan:
+        fan_mode: off
+
+      cover.garage_door_opener: closed
+      lock.lock: locked
+
+  # - name: Leaving
+  #   entities:
+
