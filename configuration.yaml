@@ -463,7 +463,7 @@ sensor:
       lock_battery:
         friendly_name: "Front Door Lock Battery"
         unit_of_measurement: '% Battery'
-        value_template: "{{ states.lock.front_door.attributes.battery_level }}"
+        value_template: "{{ states.zwave.front_door_lock.attributes.battery_level }}"
         icon_template: mdi:battery
        #Thermostat's detected temperature
       thermostat_detected_temperature:

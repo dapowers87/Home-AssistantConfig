@@ -5,6 +5,12 @@
   #- group.zenlamp
 
 - platform: group
+  name: Zen Lamp
+  entities:
+  - light.zen__bottom
+  - light.zen__top
+
+- platform: group
   name: Bedroom Area
   entities:
   - light.zen__bottom

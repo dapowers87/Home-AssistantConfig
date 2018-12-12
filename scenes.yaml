@@ -111,7 +111,23 @@
 
       cover.garage_door_opener: closed
       lock.lock: locked
-
-  # - name: Leaving
-  #   entities:
-
+      
+  - name: Good Morning
+    entities:
+      light.main_area:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      light.kitchen_area:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      light.office_table:
+        state: true
+        brightness_pct: 100
+        kelvin: 4000
+      switch.office_floor_lamp: on
+      climate.bedroom_ceiling_fan:
+        fan_mode: off
+      switch.bedroom_fan: off
+      light.bedroom_area: off
