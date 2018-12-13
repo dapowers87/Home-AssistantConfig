@@ -1,0 +1,442 @@
+{
+    "data": {
+        "config": {
+            "title": "Home",
+            "views": [
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "binary_sensor.is_david_home",
+                                "device_tracker.david_pixel",
+                                "device_tracker.pixel_ping",
+                                "device_tracker.3c286d0fbd0d"
+                            ],
+                            "title": "Presence Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.water_heater_leak_sensor"
+                            ],
+                            "show_name": false,
+                            "title": "Water Heater Leak Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.office_fan_light"
+                                },
+                                {
+                                    "entity": "fan.office_ceiling_fan"
+                                },
+                                {
+                                    "entity": "switch.bedroom_fan_light"
+                                },
+                                {
+                                    "entity": "fan.bedroom_ceiling_fan"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ceiling Fans",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "cover.garage_door_opener"
+                                },
+                                {
+                                    "entity": "light.garage_light"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Garage",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "climate.thermostat",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entities": [
+                                "light.living_room_main_lights",
+                                "light.entrance",
+                                "light.dining_room_main_lights",
+                                "light.nook",
+                                "light.kitchen_main_lights",
+                                "light.sink",
+                                "light.hallway_main_lights"
+                            ],
+                            "show_state": false,
+                            "title": "Main Area",
+                            "type": "glance"
+                        },
+                        {
+                            "camera_image": "camera.front_door",
+                            "entity": "camera.front_door",
+                            "show_info": true,
+                            "tap_action": {
+                                "action": "more-info"
+                            },
+                            "title": "Front Door",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                "lock.front_door_lock",
+                                "sensor.lock_battery"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Front Door Lock",
+                            "type": "entities"
+                        },
+                        {
+                            "column_width": "calc(100% / 2)",
+                            "entities": [
+                                "switch.bedroom_fan",
+                                "switch.living_room_fan"
+                            ],
+                            "show_state": false,
+                            "title": "Fans",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "light.bedside__left",
+                                "light.bedside__right",
+                                "light.zen_lamp"
+                            ],
+                            "show_state": false,
+                            "title": "Bedroom",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "switch.office_floor_lamp",
+                                "light.office_table"
+                            ],
+                            "show_state": false,
+                            "title": "Office",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "light.patio_lights",
+                                "light.porch"
+                            ],
+                            "show_state": false,
+                            "title": "Outdoors",
+                            "type": "glance"
+                        },
+                        {
+                            "entity": "weather.dark_sky",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        "input_boolean.turn_on_lights_in_morning",
+                                        "input_boolean.sunset_auto_dim_lights",
+                                        "input_boolean.late_night_auto_dim_lights",
+                                        "input_boolean.message_me_for_lights"
+                                    ],
+                                    "show_header_toggle": false,
+                                    "title": "Settings",
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        }
+                    ],
+                    "icon": "mdi:home",
+                    "title": "Home"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "binary_sensor.health_check"
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "cover.chicken_coop_door",
+                                "sensor.chicken_coop_detailed_state",
+                                "binary_sensor.door_jam_detected",
+                                "input_select.chicken_coop_open",
+                                "sensor.next_coop_closing"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Chicken Coop Door",
+                            "type": "entities"
+                        },
+                        {
+                            "camera_image": "camera.chicken_nest_camera",
+                            "entity": "camera.chicken_nest_camera",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "light.toggle",
+                                "service_data": {
+                                    "entity_id": "light.chicken_coop_light"
+                                }
+                            },
+                            "show_info": false,
+                            "show_name": false,
+                            "show_state": false,
+                            "tap_action": {
+                                "action": "more-info"
+                            },
+                            "title": "Chicken Nest Camera",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.chicken_coop_light",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                "input_boolean.message_me_for_coop_lights"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Settings",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.chicken_coop_nest_temperature",
+                                "sensor.chicken_coop_nest_humidity"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Chicken Nest Stats",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.chicken_coop_movement"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Motion",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:duck",
+                    "title": "Chicken Coop"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "scene.blackout"
+                                },
+                                {
+                                    "entity": "scene.good_morning"
+                                },
+                                {
+                                    "entity": "scene.goodnight"
+                                },
+                                {
+                                    "entity": "scene.leaving"
+                                },
+                                {
+                                    "entity": "scene.tv_mode"
+                                },
+                                {
+                                    "entity": "scene.lowlevel"
+                                },
+                                {
+                                    "entity": "scene.midlevel"
+                                },
+                                {
+                                    "entity": "scene.maxlevel"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Automations",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:movie",
+                    "title": "Scenes"
+                },
+                {
+                    "cards": [
+                        {
+                            "camera_image": "camera.front_door",
+                            "entity": "camera.front_door",
+                            "show_info": true,
+                            "tap_action": {
+                                "action": "dialog"
+                            },
+                            "title": "Front Door",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                "sensor.ring_front_door_battery",
+                                "sensor.ring_front_door_volume",
+                                "sensor.ring_front_door_wifi_signal_category",
+                                "sensor.ring_front_door_wifi_signal_strength"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ring Stats",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:camera",
+                    "title": "Cameras"
+                },
+                {
+                    "cards": [
+                        {
+                            "camera_image": "camera.front_door",
+                            "entity": "camera.front_door",
+                            "show_info": true,
+                            "tap_action": {
+                                "action": "dialog"
+                            },
+                            "title": "Front Door",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.front_door_lock"
+                                },
+                                {
+                                    "entity": "sensor.lock_battery"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Front Door Lock",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "binary_sensor.front_door_motion",
+                                "sensor.ring_front_door_last_motion",
+                                "sensor.ring_front_door_last_ding"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ring Activity",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.ring_front_door_battery",
+                                "sensor.ring_front_door_volume",
+                                "sensor.ring_front_door_wifi_signal_category",
+                                "sensor.ring_front_door_wifi_signal_strength"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Ring Stats",
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "Front Door"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.ring_front_door_battery",
+                                "sensor.lock_battery",
+                                "sensor.pixel_battery"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Batteries",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:battery",
+                    "title": "Batteries"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "sun.sun"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Weather",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "weather.dark_sky",
+                            "type": "weather-forecast"
+                        }
+                    ],
+                    "icon": "mdi:cloud",
+                    "title": "Weather"
+                },
+                {
+                    "cards": [
+                        {
+                            "entity": "media_player.chromecastanets",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.home_mini",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.spotify",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.samsung_tv",
+                            "type": "media-control"
+                        }
+                    ],
+                    "icon": "mdi:cast",
+                    "title": "Media Players"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "automation.arrive",
+                                "automation.leaving"
+                            ],
+                            "show_header_toggle": true,
+                            "title": "all automations",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:android",
+                    "title": "Automations"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                "sensor.lyft_home_to_dirty_sixth",
+                                "sensor.uber_home_to_dirty_sixth"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Dirty Sixth",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:taxi",
+                    "title": "Drive Times and Prices"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}
