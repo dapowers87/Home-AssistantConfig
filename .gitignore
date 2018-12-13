@@ -10,6 +10,7 @@
 *.txt
 *.log
 .storage
+!.storage/lovelace
 .cloud
 .google.token
 ip_bans.yaml

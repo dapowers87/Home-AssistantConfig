@@ -5,7 +5,7 @@
       light.porch: off
 
       cover.garage_door_opener: closed
-      lock.lock: locked
+      lock.front_door_lock: locked
 
       switch.living_room_fan: off
       switch.bedroom_fan: on
@@ -66,12 +66,18 @@
     entities:
       light.main_area:
         state: true
-        brightness_pct: 30
+        brightness_pct: 25
         kelvin: 4000
-      light.kitchen:
+      light.hallway_main_lights:
+        state: true
+        brightness: 25
+      light.kitchen_area:
         state: true
         brightness_pct: 25
         kelvin: 4000
+      # light.kitchen_main_lights:
+      #   state: true
+      #   brightness: 50
       light.office_table:
         state: true
         brightness_pct: 25
@@ -107,7 +113,7 @@
       fan.office_ceiling_fan: off
 
       cover.garage_door_opener: closed
-      lock.lock: locked
+      lock.front_door_lock: locked
       
   - name: Good Morning
     entities:

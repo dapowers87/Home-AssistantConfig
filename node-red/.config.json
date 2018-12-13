@@ -634,24 +634,6 @@
     }
    }
   },
-  "node-red-contrib-google-home-notify": {
-   "name": "node-red-contrib-google-home-notify",
-   "version": "0.0.6",
-   "local": false,
-   "nodes": {
-    "google-notify": {
-     "name": "google-notify",
-     "types": [
-      "googlehome-config-node",
-      "googlehome-notify"
-     ],
-     "enabled": true,
-     "local": false,
-     "module": "node-red-contrib-google-home-notify",
-     "file": "/opt/node_modules/node-red-contrib-google-home-notify/node-red-google-home-notify.js"
-    }
-   }
-  },
   "node-red-contrib-http-request": {
    "name": "node-red-contrib-http-request",
    "version": "0.1.13",
@@ -818,7 +800,7 @@
   },
   "node-red-node-ping": {
    "name": "node-red-node-ping",
-   "version": "0.0.15",
+   "version": "0.0.16",
    "local": false,
    "nodes": {
     "ping": {
@@ -960,7 +942,7 @@
   },
   "node-red-contrib-home-assistant-websocket": {
    "name": "node-red-contrib-home-assistant-websocket",
-   "version": "0.3.1",
+   "version": "0.4.3",
    "local": false,
    "nodes": {
     "server": {
@@ -1118,6 +1100,23 @@
      "file": "/config/node-red/node_modules/node-red-contrib-schedex/index.js"
     }
    }
+  },
+  "node-red-contrib-cast": {
+   "name": "node-red-contrib-cast",
+   "version": "0.2.1",
+   "local": false,
+   "nodes": {
+    "cast-to-client": {
+     "name": "cast-to-client",
+     "types": [
+      "cast-to-client"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-cast",
+     "file": "/opt/node_modules/node-red-contrib-cast/cast-to-client.js"
+    }
+   }
   }
  },
  "users": {
@@ -1148,7 +1147,7 @@
   "david": {
    "editor": {
     "view": {
-     "view-grid-size": 20,
+     "view-grid-size": "20",
      "view-node-status": true,
      "view-show-tips": true,
      "view-snap-grid": true,
