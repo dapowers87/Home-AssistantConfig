@@ -9,8 +9,11 @@
 *.conf
 *.txt
 *.log
-.storage
 !.storage/lovelace
+.storage/auth*
+.storage/core*
+.storage/hassio
+.storage/onboarding
 .cloud
 .google.token
 ip_bans.yaml

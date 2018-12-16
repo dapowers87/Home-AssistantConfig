@@ -75,9 +75,6 @@
         state: true
         brightness_pct: 25
         kelvin: 4000
-      # light.kitchen_main_lights:
-      #   state: true
-      #   brightness: 50
       light.office_table:
         state: true
         brightness_pct: 25

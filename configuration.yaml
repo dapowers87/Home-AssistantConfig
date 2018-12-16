@@ -84,6 +84,9 @@ input_boolean:
   message_me_for_lights:
     name: Message me for light change automations
     icon: mdi:lightbulb
+  message_me_for_leaving_arriving:
+    name: Message me for leaving/arriving automations
+    icon: mdi:lightbulb
   message_me_for_coop_lights:
     name: Message me for coop light automations
     icon: mdi:lightbulb  
@@ -490,20 +493,22 @@ climate:
 fan:
   - platform: mqtt
     name: Office Ceiling Fan
-    command_topic: 'fanControl/OfficeFan/fan/set'
-    speed_command_topic: 'fanControl/OfficeFan/fan/set'
-    payload_on: "low"
-    payload_off: "off"
+    command_topic: 'fanControl/OfficeFan/fan/on/set'
+    state_topic: "fanControl/OfficeFan/fan/on/state"
+    
+    speed_command_topic: 'fanControl/OfficeFan/fan/speed/set'
+    speed_state_topic: 'fanControl/OfficeFan/fan/speed/state'
     speeds:
       - low
       - medium
       - high
   - platform: mqtt
     name: Bedroom Ceiling Fan
-    command_topic: 'fanControl/BedroomFan/fan/set'
-    speed_command_topic: 'fanControl/BedroomFan/fan/set'
-    payload_on: "low"
-    payload_off: "off"
+    command_topic: 'fanControl/BedroomFan/fan/on/set'
+    state_topic: "fanControl/BedroomFan/fan/on/state"
+    
+    speed_command_topic: 'fanControl/BedroomFan/fan/speed/set'
+    speed_state_topic: 'fanControl/BedroomFan/fan/speed/state'
     speeds:
       - low
       - medium

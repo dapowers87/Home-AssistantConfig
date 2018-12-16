@@ -17,14 +17,6 @@
                         },
                         {
                             "entities": [
-                                "binary_sensor.water_heater_leak_sensor"
-                            ],
-                            "show_name": false,
-                            "title": "Water Heater Leak Detection",
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
                                 {
                                     "entity": "switch.office_fan_light"
                                 },
@@ -85,6 +77,14 @@
                         },
                         {
                             "entities": [
+                                "binary_sensor.water_heater_leak_sensor"
+                            ],
+                            "show_name": false,
+                            "title": "Water Heater Leak Detection",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
                                 "lock.front_door_lock",
                                 "sensor.lock_battery"
                             ],
@@ -104,21 +104,21 @@
                         },
                         {
                             "entities": [
+                                "light.office_floor_lamp",
+                                "light.office_table"
+                            ],
+                            "show_state": false,
+                            "title": "Office",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
                                 "light.bedside__left",
                                 "light.bedside__right",
                                 "light.zen_lamp"
                             ],
                             "show_state": false,
                             "title": "Bedroom",
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                "switch.office_floor_lamp",
-                                "light.office_table"
-                            ],
-                            "show_state": false,
-                            "title": "Office",
                             "type": "glance"
                         },
                         {
@@ -135,20 +135,26 @@
                             "type": "weather-forecast"
                         },
                         {
-                            "cards": [
+                            "entities": [
                                 {
-                                    "entities": [
-                                        "input_boolean.turn_on_lights_in_morning",
-                                        "input_boolean.sunset_auto_dim_lights",
-                                        "input_boolean.late_night_auto_dim_lights",
-                                        "input_boolean.message_me_for_lights"
-                                    ],
-                                    "show_header_toggle": false,
-                                    "title": "Settings",
-                                    "type": "entities"
+                                    "entity": "input_boolean.turn_on_lights_in_morning"
+                                },
+                                {
+                                    "entity": "input_boolean.sunset_auto_dim_lights"
+                                },
+                                {
+                                    "entity": "input_boolean.late_night_auto_dim_lights"
+                                },
+                                {
+                                    "entity": "input_boolean.message_me_for_lights"
+                                },
+                                {
+                                    "entity": "input_boolean.message_me_for_leaving_arriving"
                                 }
                             ],
-                            "type": "horizontal-stack"
+                            "show_header_toggle": false,
+                            "title": "Settings",
+                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home",
