@@ -56,11 +56,11 @@
         state: true
         brightness_pct: 33
         kelvin: 4000
-      light.office_table:
-        state: true
-        brightness_pct: 50
-        kelvin: 4000
-      light.office_floor_lamp: off
+      # light.office_table:
+      #   state: true
+      #   brightness_pct: 50
+      #   kelvin: 4000
+      #light.office_floor_lamp: off
 
   - name: Low-Level
     entities:

@@ -207,7 +207,10 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  api_password: !secret ha_api_password
+  base_url: https://dapowers87.duckdns.org:8123
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  #api_password: !secret ha_api_password
   login_attempts_threshold: 3
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
@@ -628,15 +631,37 @@ lutron_caseta:
 #     certfile: caseta.crt
 #     ca_certs: caseta-bridge.crt
 
-# google_assistant:
-#   project_id: !secret google_assistant_project_id
-# client_id: !secret google_assistant_client_id
-# access_token: !secret google_assistant_access_token
-# agent_user_id: !secret google_assistant_username 
-# api_key: !secret google_assistant_api_key
-#   exposed_domains:
-#   - switch
-#   - light
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  api_key: !secret google_assistant_api_key
+  exposed_domains:
+    - switch
+    - light
+    - cover
+    - fan
+    - scene
+    - lock
+  allow_unlock: true
+  entity_config:
+    light.zen__top:
+      expose: false
+    light.zen__bottom:
+      expose: false
+    switch.garage_light:
+      expose: false
+    switch.patio_lights:
+      expose: false
+    switch.office_floor_lamp:
+      expose: false
+    switch.chicken_coop_light:
+      expose: false
+    light.bedroom_area:
+      expose: false
+    light.main_area:
+      expose: false
+    light.kitchen_area:
+      expose: false
+  
 #   - group
   #entity_config:
   # switch.kitchen:
