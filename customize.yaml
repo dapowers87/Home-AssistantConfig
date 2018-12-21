@@ -16,12 +16,22 @@ binary_sensor.door_jam_detected:
 binary_sensor.sensor_failure_detected:
   device_class: problem
 light.living_room_main_lights:
+  dimming_target: 'true'
   friendly_name: Living Room
 light.kitchen_main_lights:
+  dimming_target: 'true'
   friendly_name: Kitchen
 light.dining_room_main_lights:
+  dimming_target: 'true'
   friendly_name: Dining Room
 light.hallway_main_lights:
+  dimming_target: 'true'
   friendly_name: Hallway
 binary_sensor.water_heater_leak_sensor:
   device_class: moisture
+light.nook:
+  dimming_target: 'true'
+light.sink:
+  dimming_target: 'true'
+light.entrance:
+  dimming_target: 'true'
