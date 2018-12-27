@@ -26,6 +26,7 @@
   - light.nook
   - light.kitchen_main_lights
   - light.sink
+  - light.utility_room
 
   #######   SWITCHES BEING CONVERTED TO LIGHTS
   

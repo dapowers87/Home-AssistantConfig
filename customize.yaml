@@ -35,3 +35,13 @@ light.sink:
   dimming_target: 'true'
 light.entrance:
   dimming_target: 'true'
+light.zen_lamp:
+  dimmable_target: 'true'
+light.bedside__left:
+  dimmable_target: 'true'
+light.bedside__right:
+  dimmable_target: 'true'
+light.utility_room:
+  dimmable_target: 'true'
+light.bedroom_area:
+  dimmable_target: 'true'

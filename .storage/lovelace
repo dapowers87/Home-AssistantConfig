@@ -11,7 +11,10 @@
                                     "entity": "cover.garage_door_opener"
                                 },
                                 {
-                                    "entity": "light.garage_light"
+                                    "entity": "light.garage_light",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
                                 }
                             ],
                             "show_header_toggle": false,
@@ -47,14 +50,11 @@
                             "type": "entities"
                         },
                         {
-                            "columns": 3,
+                            "columns": 2,
                             "entities": [
                                 "light.living_room_main_lights",
                                 "light.entrance",
                                 "light.dining_room_main_lights",
-                                "light.nook",
-                                "light.kitchen_main_lights",
-                                "light.sink",
                                 "light.hallway_main_lights"
                             ],
                             "show_state": false,
@@ -88,10 +88,19 @@
                             "type": "picture-entity"
                         },
                         {
-                            "column_width": "calc(100% / 2)",
                             "entities": [
-                                "switch.bedroom_fan",
-                                "switch.living_room_fan"
+                                {
+                                    "entity": "switch.bedroom_fan",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
+                                {
+                                    "entity": "switch.living_room_fan",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                }
                             ],
                             "show_state": false,
                             "title": "Fans",
@@ -99,7 +108,12 @@
                         },
                         {
                             "entities": [
-                                "light.office_floor_lamp",
+                                {
+                                    "entity": "light.office_floor_lamp",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
                                 "light.office_table"
                             ],
                             "show_state": false,
@@ -160,10 +174,12 @@
                             "type": "entities"
                         },
                         {
+                            "columns": 2,
                             "entities": [
                                 "light.nook",
                                 "light.sink",
-                                "light.kitchen_main_lights"
+                                "light.kitchen_main_lights",
+                                "light.utility_room"
                             ],
                             "show_state": false,
                             "title": "Kitchen Area",

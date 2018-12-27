@@ -15,6 +15,7 @@
 
       light.main_area: off
 
+      light.utility_room: off
       light.kitchen_main_lights: off
       light.nook: off
       light.sink:
@@ -24,6 +25,7 @@
 
       fan.office_ceiling_fan: off
       fan.bedroom_ceiling_fan:
+        state: true
         speed: low
 
       light.bedroom_area:
