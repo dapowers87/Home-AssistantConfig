@@ -277,9 +277,11 @@ switch:
   - platform: mqtt
     name: Office Fan Light
     command_topic: 'fanControl/OfficeFan/light/set'
+    state_topic: "fanControl/OfficeFan/fan/light/state"
   - platform: mqtt
     name: Bedroom Fan Light
     command_topic: 'fanControl/BedroomFan/light/set'
+    state_topic: "fanControl/BedroomFan/fan/light/state"
 
 sensor:
 
@@ -655,12 +657,16 @@ google_assistant:
       expose: false
     switch.chicken_coop_light:
       expose: false
-    light.bedroom_area:
+    switch.bedroom_fan_light:
       expose: false
-    light.main_area:
+    switch.office_fan_light:
       expose: false
-    light.kitchen_area:
-      expose: false
+    # light.bedroom_area:
+    #   expose: false
+    # light.main_area:
+    #   expose: false
+    # light.kitchen_area:
+    #   expose: false
   
 #   - group
   #entity_config:

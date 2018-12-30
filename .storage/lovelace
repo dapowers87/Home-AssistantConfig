@@ -24,13 +24,13 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "switch.office_fan_light"
+                                    "entity": "light.office_fan_light"
                                 },
                                 {
                                     "entity": "fan.office_ceiling_fan"
                                 },
                                 {
-                                    "entity": "switch.bedroom_fan_light"
+                                    "entity": "light.bedroom_fan_light"
                                 },
                                 {
                                     "entity": "fan.bedroom_ceiling_fan"

@@ -45,3 +45,11 @@
 - platform: switch
   name: Chicken Coop Light
   entity_id: switch.chicken_coop_light
+
+- platform: switch
+  name: Bedroom Fan Light
+  entity_id: switch.bedroom_fan_light
+
+- platform: switch
+  name: Office Fan Light
+  entity_id: switch.office_fan_light
