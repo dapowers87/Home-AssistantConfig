@@ -412,7 +412,7 @@
   },
   "node-red-contrib-bigtimer": {
    "name": "node-red-contrib-bigtimer",
-   "version": "2.1.4",
+   "version": "2.1.6",
    "local": false,
    "nodes": {
     "bigtimer": {
@@ -1174,7 +1174,7 @@
      "view-show-grid": true
     }
    },
-   "menu-menu-item-sidebar": false
+   "menu-menu-item-sidebar": true
   }
  }
 }
