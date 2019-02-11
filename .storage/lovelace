@@ -131,9 +131,15 @@
                         },
                         {
                             "entities": [
-                                "light.bedside__left",
-                                "light.bedside__right",
-                                "light.zen_lamp"
+                                {
+                                    "entity": "light.bedside_left"
+                                },
+                                {
+                                    "entity": "light.bedside_right"
+                                },
+                                {
+                                    "entity": "light.zen_lamp"
+                                }
                             ],
                             "show_state": false,
                             "title": "Bedroom",
@@ -290,13 +296,13 @@
                                     "entity": "scene.tv_mode"
                                 },
                                 {
-                                    "entity": "scene.lowlevel"
+                                    "entity": "scene.low_level"
                                 },
                                 {
-                                    "entity": "scene.midlevel"
+                                    "entity": "scene.mid_level"
                                 },
                                 {
-                                    "entity": "scene.maxlevel"
+                                    "entity": "scene.max_level"
                                 },
                                 {
                                     "entity": "scene.leaving"

@@ -25,6 +25,7 @@ light.dining_room_main_lights:
   dimming_target: 'true'
   friendly_name: Dining Room
 light.hallway_main_lights:
+  10PM_level: '20'
   dimming_target: 'true'
   friendly_name: Hallway
 binary_sensor.water_heater_leak_sensor:
@@ -37,9 +38,9 @@ light.entrance:
   dimming_target: 'true'
 light.zen_lamp:
   dimmable_target: 'true'
-light.bedside__left:
+light.bedside_left:
   dimmable_target: 'true'
-light.bedside__right:
+light.bedside_right:
   dimmable_target: 'true'
 light.utility_room:
   dimmable_target: 'true'

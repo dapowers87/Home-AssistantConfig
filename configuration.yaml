@@ -460,13 +460,6 @@ history:
       - device_tracker.david_pixel
   exclude:
     entities:
-      - light.nook_2
-      - light.sink_2
-      - light.wbedside__left
-      - light.wbedside__right
-      - light.woffice_table
-      - light.wzen__bottom
-      - light.wzen__top
       - binary_sensor.is_david_home
       - sensor.wink_relay_sensor_proximity
       - sensor.ring_front_door_battery
@@ -645,9 +638,9 @@ google_assistant:
     - lock
   allow_unlock: true
   entity_config:
-    light.zen__top:
+    light.zen_top:
       expose: false
-    light.zen__bottom:
+    light.zen_bottom:
       expose: false
     switch.garage_light:
       expose: false

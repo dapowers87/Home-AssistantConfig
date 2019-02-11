@@ -1,16 +1,16 @@
 - platform: group
   name: Zen Lamp
   entities:
-  - light.zen__bottom
-  - light.zen__top
+  - light.zen_bottom
+  - light.zen_top
 
 - platform: group
   name: Bedroom Area
   entities:
-  - light.zen__bottom
-  - light.zen__top
-  - light.bedside__left
-  - light.bedside__right
+  - light.zen_bottom
+  - light.zen_top
+  - light.bedside_left
+  - light.bedside_right
 
 - platform: group
   name: Main Area

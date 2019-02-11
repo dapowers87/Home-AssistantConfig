@@ -71,16 +71,24 @@
 
   - name: Low-Level
     entities:
-      light.main_area:
+      light.living_room_main_lights:
         state: true
-        brightness_pct: 25
+        brightness_pct: 30
+        kelvin: 4000
+      light.dining_room_main_lights:
+        state: true
+        brightness_pct: 15
+        kelvin: 4000
+      light.entrance:
+        state: true
+        brightness_pct: 35
         kelvin: 4000
       light.hallway_main_lights:
         state: true
         brightness: 25
       light.kitchen_area:
         state: true
-        brightness_pct: 25
+        brightness_pct: 20
         kelvin: 4000
       light.office_table:
         state: true
@@ -140,8 +148,6 @@
         brightness_pct: 100
         kelvin: 4000
       light.office_floor_lamp: on
-      climate.bedroom_ceiling_fan:
-        fan_mode: off
       switch.bedroom_fan: off
       fan.bedroom_ceiling_fan: off
       light.bedroom_area: off
@@ -155,15 +161,30 @@
         state: true
         brightness_pct: 50
         kelvin: 2000
-      light.kitchen_area:
-        state: true
-        brightness_pct: 30
-        kelvin: 2000
       light.living_room_main_lights:
         state: true
         brightness_pct: 15
       light.hallway_main_lights:
         state: true
-        brightness_pct: 25
+        brightness_pct: 20
+      light.nook: off
+      light.kitchen_main_lights:
+        state: true
+        brightness_pct: 15
+      light.sink:
+        state: true
+        brightness_pct: 15
+        kelvin: 2000
       light.bedroom_area: off
       light.dining_room_main_lights: off
+
+
+  - name: Bedroom Button
+    entities:
+      light.bedroom_area: off
+      switch.bedroom_fan: on
+      light.hallway_main_lights: off
+      fan.bedroom_ceiling_fan:
+        state: true
+        speed: low
+      switch.bedroom_fan_light: off

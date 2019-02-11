@@ -257,15 +257,15 @@ Fans:
 #     name: Bedside Table Lights
 #     view: no
 #     entities:
-#     - light.bedside__left
-#     - light.bedside__right
+#     - light.bedside_left
+#     - light.bedside_right
 
 # ZenLamp:
 #     name: Zen Lamp
 #     view: no
 #     entities:
-#     - light.zen__top
-#     - light.zen__bottom
+#     - light.zen_top
+#     - light.zen_bottom
 
 # Bedroom:
 #   name: Bedroom

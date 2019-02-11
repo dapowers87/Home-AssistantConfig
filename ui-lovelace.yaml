@@ -76,8 +76,8 @@ views:
         column_width: calc(100% / 3)
         show_state: false
         entities:
-          - light.bedside__left
-          - light.bedside__right
+          - light.bedside_left
+          - light.bedside_right
           - light.zen_lamp
       
       

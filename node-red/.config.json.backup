@@ -412,7 +412,7 @@
   },
   "node-red-contrib-bigtimer": {
    "name": "node-red-contrib-bigtimer",
-   "version": "2.0.7",
+   "version": "2.1.4",
    "local": false,
    "nodes": {
     "bigtimer": {
@@ -942,7 +942,7 @@
   },
   "node-red-contrib-home-assistant-websocket": {
    "name": "node-red-contrib-home-assistant-websocket",
-   "version": "0.5.0",
+   "version": "0.7.0",
    "local": false,
    "nodes": {
     "server": {
@@ -1054,6 +1054,16 @@
      "local": false,
      "module": "node-red-contrib-home-assistant-websocket",
      "file": "/opt/node_modules/node-red-contrib-home-assistant-websocket/nodes/render-template/render-template.js"
+    },
+    "ha-wait-until": {
+     "name": "ha-wait-until",
+     "types": [
+      "ha-wait-until"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-home-assistant-websocket",
+     "file": "/opt/node_modules/node-red-contrib-home-assistant-websocket/nodes/wait-until/wait-until.js"
     }
    }
   },
@@ -1113,7 +1123,7 @@
   },
   "node-red-contrib-cast": {
    "name": "node-red-contrib-cast",
-   "version": "0.2.1",
+   "version": "0.2.4",
    "local": false,
    "nodes": {
     "cast-to-client": {
@@ -1164,7 +1174,7 @@
      "view-show-grid": true
     }
    },
-   "menu-menu-item-sidebar": false
+   "menu-menu-item-sidebar": true
   }
  }
 }
