@@ -11,6 +11,8 @@ homeassistant:
   time_zone: !secret timezone
   # Customization file
   customize: !include customize.yaml
+  
+  #system_health:
 
 python_script:
 
@@ -56,7 +58,6 @@ device_tracker:
       #~ hide_if_away: True
   - platform: ping
     track_new_devices: False
-    friendly_name: Pixel
     consider_home: 180
     scan_interval: 10
     new_device_defaults:
@@ -64,6 +65,7 @@ device_tracker:
       hide_if_away: True
     hosts:
       pixel_ping: 192.168.1.190
+  - platform: bluetooth_tracker
 
 owntracks:
   max_gps_accuracy: 250
@@ -88,7 +90,10 @@ input_boolean:
     icon: mdi:lightbulb
   message_me_for_coop_lights:
     name: Message me for coop light automations
-    icon: mdi:lightbulb  
+    icon: mdi:lightbulb 
+  message_me_for_coop_open_close:
+    name: Message me for coop door open/close
+    icon: mdi:unfold-more-horizontal
 
 input_select:
   chicken_coop_open:
@@ -558,21 +563,21 @@ ifttt:
 weather:
   - platform: darksky
     api_key: !secret darksky_api
-    monitored_conditions:
-      - summary
-      - precip_type
-      - precip_intensity
-      - precip_intensity_max
-      - precip_probability
-      - precip_accumulation
-      - temperature
-      - apparent_temperature
-      - apparent_temperature_max
-      - apparent_temperature_min
-      - wind_speed
-      - wind_bearing
-      - humidity
-      - hourly_summary
+    #monitored_conditions:
+     # - summary
+      #- icon
+      # temperature
+      # - summary
+      # - precip_type
+      # - precip_intensity
+      # - precip_probability
+      # - precip_accumulation
+      # - temperature
+      # - apparent_temperature
+      # - wind_speed
+      # - wind_bearing
+      # - humidity
+      # - hourly_summary
 
 notify:
   - platform: pushbullet

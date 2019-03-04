@@ -2,7 +2,7 @@
  "nodes": {
   "node-red": {
    "name": "node-red",
-   "version": "0.19.5",
+   "version": "0.19.6",
    "local": false,
    "nodes": {
     "sentiment": {
@@ -412,7 +412,7 @@
   },
   "node-red-contrib-bigtimer": {
    "name": "node-red-contrib-bigtimer",
-   "version": "2.1.6",
+   "version": "2.1.9",
    "local": false,
    "nodes": {
     "bigtimer": {
@@ -942,7 +942,7 @@
   },
   "node-red-contrib-home-assistant-websocket": {
    "name": "node-red-contrib-home-assistant-websocket",
-   "version": "0.7.0",
+   "version": "0.8.0",
    "local": false,
    "nodes": {
     "server": {
@@ -1069,7 +1069,7 @@
   },
   "node-red-node-serialport": {
    "name": "node-red-node-serialport",
-   "version": "0.6.8",
+   "version": "0.7.0",
    "local": false,
    "nodes": {
     "serialport": {

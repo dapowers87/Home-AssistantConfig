@@ -249,7 +249,12 @@
                         },
                         {
                             "entities": [
-                                "input_boolean.message_me_for_coop_lights"
+                                {
+                                    "entity": "input_boolean.message_me_for_coop_lights"
+                                },
+                                {
+                                    "entity": "input_boolean.message_me_for_coop_open_close"
+                                }
                             ],
                             "show_header_toggle": false,
                             "title": "Settings",
