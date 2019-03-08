@@ -186,5 +186,9 @@
       light.hallway_main_lights: off
       fan.bedroom_ceiling_fan:
         state: true
-        speed: low
+        speed: medium
       switch.bedroom_fan_light: off
+      light.bedside_left: on
+        brightness_pct: 1
+      light.bedside_right: on
+        brightness_pct: 1  
