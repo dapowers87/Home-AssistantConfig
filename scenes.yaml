@@ -188,7 +188,9 @@
         state: true
         speed: medium
       switch.bedroom_fan_light: off
-      light.bedside_left: on
+      light.bedside_left: 
+        state: true
         brightness_pct: 1
-      light.bedside_right: on
+      light.bedside_right: 
+        state: true
         brightness_pct: 1  
