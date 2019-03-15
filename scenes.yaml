@@ -181,7 +181,7 @@
 
   - name: Bedroom Button
     entities:
-      light.bedroom_area: off
+      light.zen_lamp: off
       switch.bedroom_fan: on
       light.hallway_main_lights: off
       fan.bedroom_ceiling_fan:
