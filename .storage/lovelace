@@ -173,6 +173,9 @@
                                 },
                                 {
                                     "entity": "input_boolean.message_me_for_leaving_arriving"
+                                },
+                                {
+                                    "entity": "input_boolean.message_me_for_roomba_activation"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -267,14 +270,6 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Chicken Nest Stats",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.chicken_coop_movement"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Motion",
                             "type": "entities"
                         }
                     ],

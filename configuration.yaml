@@ -16,6 +16,13 @@ homeassistant:
 
 python_script:
 
+system_health:
+
+googlehome:
+  devices:
+    - host: 192.168.1.225
+    #- host: 192.168.1.214
+
 #wink:
 
 hue:
@@ -94,6 +101,9 @@ input_boolean:
   message_me_for_coop_open_close:
     name: Message me for coop door open/close
     icon: mdi:unfold-more-horizontal
+  message_me_for_roomba_activation:
+    name: Message me for Roomba activation
+    icon: mdi:robot-vacuum
 
 input_select:
   chicken_coop_open:
@@ -106,6 +116,7 @@ input_select:
     icon: mdi:white-balance-sunny
 
 binary_sensor:
+  - platform: ring
   # Chicken Pi Is Alive Check
   - platform: ping
     name: "Health Check"
@@ -266,6 +277,7 @@ camera:
   - platform: generic
     name: Chicken Nest Camera
     still_image_url: !secret chicken_nest_camera_url
+    #stream_source: http://192.168.1.150/cam_pic_new.php
     framerate: 35
     #~ - platform: arlo
       #~ ffmpeg_arguments: '-pred 1 -q:v 2'
@@ -491,6 +503,7 @@ climate:
     username: !secret climate_username
     password: !secret climate_password
     scan_interval: 60
+    region: "us"
 
 fan:
   - platform: mqtt
